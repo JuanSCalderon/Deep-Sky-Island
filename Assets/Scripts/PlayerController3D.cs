@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController3D : MonoBehaviour
 {
@@ -9,12 +10,19 @@ public class PlayerController3D : MonoBehaviour
     [SerializeField] float _playerSpeed;
     [SerializeField] float _rotationSpeed;
     [SerializeField] float jumpForce;
+    [SerializeField] float hitPoints = 3;
+    private readonly int fuel = 5; // Número de elementos necesarios para activar el jetpack
     private readonly float gravity = 9.8f;
+    [SerializeField] private int collectedItems = 0;
+    //private readonly float sphereRadius = 0.45f;
+    public Text energyText; // UI Text para mostrar la energía restante
+    public Text itemsText; // UI Text para mostrar el número de items recogidos
 
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform groundCheck;
 
     private Vector3 velocity;
+
     [SerializeField] private bool isGrounded;
 
     void Start()
@@ -29,9 +37,9 @@ public class PlayerController3D : MonoBehaviour
         if (isGrounded)
         {
             velocity.y = 0f;
-            Jump();           
+            Jump();
         }
-        
+
         Movement();
 
         if (!isGrounded)
@@ -39,8 +47,6 @@ public class PlayerController3D : MonoBehaviour
             velocity.y -= gravity * 2f * Time.deltaTime;
             _playerController.Move(velocity * Time.deltaTime);
         }
-
-        
     }
 
     private void Movement()
@@ -49,7 +55,7 @@ public class PlayerController3D : MonoBehaviour
         float hInput = Input.GetAxis("Horizontal");
         float vInput = Input.GetAxis("Vertical");
 
-        Vector3 movementInput = new(hInput, 0, vInput);
+        Vector3 movementInput = new(vInput, 0, -hInput);
         Vector3 movementDirection = movementInput.normalized;
 
 
@@ -66,17 +72,46 @@ public class PlayerController3D : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            velocity.y = Mathf.Sqrt(jumpForce * gravity);            
+            velocity.y = Mathf.Sqrt(jumpForce * gravity);
+            _playerController.Move(velocity * Time.deltaTime);
         }
-        _playerController.Move(velocity * Time.deltaTime);
     }
     private bool GroundCheck()
     {
-        float rayLength = 0.45f;
         Ray ray = new(groundCheck.position, Vector3.down);
+        float rayLength = 0.5f;
         Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
         return Physics.Raycast(ray, out RaycastHit hit, rayLength, groundMask);
+
+        //return Physics.SphereCast(ray, sphereRadius, 0, groundMask);
+
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        
+        if (collision.gameObject.CompareTag("Collectible"))
+        {
+            collectedItems++;
+            Destroy(collision.gameObject);
+            
+
+            if (collectedItems >= fuel)
+            {
+                Debug.Log("Jetpack listo para usar");
+            }
+        }
+    }
+
+    //void UpdateItemsText()
+    //{
+    //    itemsText.text = "Items: " + collectedItems;
+    //}
+
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(groundCheck.position, .45f);
+    //}
 }
 
 

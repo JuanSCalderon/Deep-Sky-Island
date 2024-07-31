@@ -8,6 +8,7 @@ TagManager:
   - Salt
   - Candy
   - Enemy
+  - Collectible
   layers:
   - Default
   - TransparentFX
