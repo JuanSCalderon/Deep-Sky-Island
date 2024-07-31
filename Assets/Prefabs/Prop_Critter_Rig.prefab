@@ -80,6 +80,7 @@ GameObject:
   m_Component:
   - component: {fileID: 946745755480958570}
   - component: {fileID: 6723091124454698911}
+  - component: {fileID: 404857231292414943}
   m_Layer: 0
   m_Name: Prop_Critter_Rig
   m_TagString: Untagged
@@ -96,7 +97,7 @@ Transform:
   m_GameObject: {fileID: 461711953127898320}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 130, y: 130, z: 130}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4478087731426379610}
@@ -117,6 +118,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!95 &404857231292414943
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461711953127898320}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 173fd8d3f04f99f44a5835ea0a7b99ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &619016482647464195
 GameObject:
   m_ObjectHideFlags: 0
