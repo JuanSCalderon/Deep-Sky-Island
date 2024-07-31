@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController3D : MonoBehaviour
 {
     CharacterController _playerController;
 
@@ -29,15 +29,14 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             velocity.y = 0f;
-            Jump();
-            _playerController.Move(velocity * Time.deltaTime);
+            Jump();           
         }
         
         Movement();
 
         if (!isGrounded)
         {
-            velocity.y -= gravity * Time.deltaTime;
+            velocity.y -= gravity * 2f * Time.deltaTime;
             _playerController.Move(velocity * Time.deltaTime);
         }
 
@@ -69,6 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpForce * gravity);            
         }
+        _playerController.Move(velocity * Time.deltaTime);
     }
     private bool GroundCheck()
     {
