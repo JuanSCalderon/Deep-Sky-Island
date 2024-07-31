@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Powerup
+  - Salt
+  - Candy
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -18,7 +22,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 
