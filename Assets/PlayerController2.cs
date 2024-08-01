@@ -86,4 +86,3 @@ public class PlayerController2 : MonoBehaviour
             movePlayer.y = fallVelocity;
         }
     }}
-}
