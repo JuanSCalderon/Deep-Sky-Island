@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Powerup
+  - Salt
+  - Candy
+  - Enemy
+  - Collectible
+  - Boundary
+  - Spaceship
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
@@ -18,7 +26,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 

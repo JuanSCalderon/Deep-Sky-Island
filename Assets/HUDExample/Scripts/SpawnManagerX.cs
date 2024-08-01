@@ -7,28 +7,53 @@ public class SpawnManagerX : MonoBehaviour
     public GameObject[] objectPrefabs;
     private float spawnDelay = 2;
     private float spawnInterval = 1.5f;
+    private int maxEnemies = 5; // Ensure only one enemy at a time
+    private List<GameObject> spawnedEnemies = new List<GameObject>();
+    private List<Transform> spawnPoints = new List<Transform>();
 
-    private PlayerControllerX playerControllerScript;
+    private CapsuleController capsuleControllerScript;
 
-    // Start is called before the first frame update
     void Start()
-{
-    InvokeRepeating("SpawnObjects", spawnDelay, spawnInterval);
-    playerControllerScript = GameObject.Find("Player").GetComponent<PlayerControllerX>();
-}
-
-    // Spawn obstacles
-    void SpawnObjects ()
     {
-        // Set random spawn location and random object index
-        Vector3 spawnLocation = new Vector3(30, Random.Range(5, 15), 0);
-        int index = Random.Range(0, objectPrefabs.Length);
-
-        // If game is still active, spawn new object
-        if (!playerControllerScript.gameOver)
+        // Get all child transforms (spawn points)
+        foreach (Transform child in transform)
         {
-            Instantiate(objectPrefabs[index], spawnLocation, objectPrefabs[index].transform.rotation);
+            spawnPoints.Add(child);
         }
 
+        if (spawnPoints.Count == 0)
+        {
+            Debug.LogError("No spawn points found as children of the SpawnManagerX");
+        }
+
+        InvokeRepeating("SpawnObjects", spawnDelay, spawnInterval);
+        capsuleControllerScript = GameObject.Find("Capsule").GetComponent<CapsuleController>();
     }
+
+    void SpawnObjects()
+    {
+        if (spawnedEnemies.Count < maxEnemies)
+        {
+            Vector3 spawnLocation = GetRandomSpawnPoint();
+            int index = Random.Range(0, objectPrefabs.Length);
+
+            GameObject spawnedEnemy = Instantiate(objectPrefabs[index], spawnLocation, objectPrefabs[index].transform.rotation);
+            spawnedEnemies.Add(spawnedEnemy);
+
+            CleanupDestroyedEnemies();
+        }
+    }
+
+    Vector3 GetRandomSpawnPoint()
+    {
+        int randomIndex = Random.Range(0, spawnPoints.Count);
+        return spawnPoints[randomIndex].position;
+    }
+
+    void CleanupDestroyedEnemies()
+    {
+        spawnedEnemies.RemoveAll(item => item == null);
+    }
+
+
 }

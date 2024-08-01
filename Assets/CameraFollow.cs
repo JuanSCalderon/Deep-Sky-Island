@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField] private float smoothSpeed = 0.1f;
 
-    private void Start()
+    private void Awake()
     {
         // You can also specify your own offset from inspector
         // by making isCustomOffset bool to true
@@ -31,6 +31,6 @@ public class CameraFollow : MonoBehaviour
         targetPos, smoothSpeed);
 
         transform.position = smoothFollow;
-        transform.LookAt(target);
+        //transform.LookAt(target);
     }
 }
