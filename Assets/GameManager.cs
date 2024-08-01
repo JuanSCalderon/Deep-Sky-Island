@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
     }
 
-    public void LoadGameOverScene() => SceneManager.LoadScene("Defeat");
-    public void LoadVictoryScene() => SceneManager.LoadScene("Victory");
+    public void LoadGameOverScene() => SceneManager.LoadScene("Game Over");
+    public void LoadVictoryScene() => SceneManager.LoadScene("WinScene");
     public void ReloadScene() => SceneManager.LoadScene(currentScene.name);
 
 

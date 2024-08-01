@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: 39d3fc39d8151ae41b394ebe2b6865e9
   - enabled: 1
-    path: Assets/Scenes/GymKarol.unity
+    path: Assets/Scenes/Main Scene.unity
     guid: 5b243bd24bc0d5f4a9f74d844b64c0fb
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: 75dddc4312cde4f489a069768c7cb547
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 6cc37ef40c0534740815dfded06023b6
   m_configObjects: {}
