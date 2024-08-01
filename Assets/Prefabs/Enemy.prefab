@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 6723091124454698911}
   - component: {fileID: 404857231292414943}
   m_Layer: 0
-  m_Name: Prop_Critter_Rig
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

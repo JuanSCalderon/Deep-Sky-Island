@@ -17,19 +17,11 @@ public class PlayerController2 : MonoBehaviour
     public Camera mainCamera;
     private Vector3 camForward;
     private Vector3 camRight;
-    // public GameObject swordPrefab;
-    // private bool isAttacking = false;
-    // public AudioManager audioManager;
-    // public HealthyBar healthBar;
-    // public float playerLives = 10f;
-    // public ParticleSystem bloodParticle;
-    // public GameOver gameOverScript;
 
     void Start()
     {
         Animator = GetComponent<Animator>();
         player = GetComponent<CharacterController>();
-        // healthBar.SetHealthyBar(playerLives);
     }
 
     void Update()
@@ -79,11 +71,6 @@ public class PlayerController2 : MonoBehaviour
         {
             // Animator.SetBool("jumping", false);
         }
-
-        // if (Input.GetButtonDown("Fire1"))
-        // {
-        //     LauchSword();
-        // }
     }
     void setGravity()
     {
@@ -98,31 +85,5 @@ public class PlayerController2 : MonoBehaviour
             fallVelocity -= gravity * Time.deltaTime;
             movePlayer.y = fallVelocity;
         }
-    }
-
-
-
-// void OnCollisionEnter(Collision collision)
-// {
-//     if (collision.gameObject.CompareTag("Enemy"))
-//     {
-//         playerLives -= 0.2f;
-//         healthBar.SetHealth(playerLives);
-
-//         if (playerLives <= 0)
-//         {
-//             Debug.Log("El jugador ha muerto.");
-//             if (Animator != null) {
-//                 Animator.SetBool("death", true);
-//             }
-//             bloodParticle.Play();
-//             gameOverScript.ShowGameOver();
-//         }
-//     }
-// }
-// public void ResetHealth()
-// {
-//     playerLives = 5f;
-//     healthBar.SetHealth(playerLives);
-// }
+    }}
 }

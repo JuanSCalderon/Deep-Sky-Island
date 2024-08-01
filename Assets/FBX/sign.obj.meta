@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c19bc1b119ff1bd4a917584651a25e61
+guid: 6845ad32c0b64904ea18f6dab24e4adf
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,23 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: map_4_group1_map_4_polySurface1157_map_4_polySurface1503_polySurface938Mat
-    second: {fileID: 2100000, guid: 7d035ea29d894b4469870e00eab68295, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: map_4_group1_map_4_polySurface1157_map_4_polySurface1503_polySurface939Mat
-    second: {fileID: 2100000, guid: fb6fcbaf24a45d940bff17cff1d266ce, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: map_4_group1_map_4_polySurface1157_map_4_polySurface1503_polySurface940Mat
-    second: {fileID: 2100000, guid: 71ef51bc6f854bd4db68056e774aec0c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: polySurface1Mat
-    second: {fileID: 2100000, guid: c471f6377db61a64eb2f400a0582db0f, type: 2}
+      name: Sign_3_post_Baked_Cylinder.010_Sign_3_post_BakedMat
+    second: {fileID: 2100000, guid: ef002e81be1a9be4a9d8f69da7ab7164, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -66,7 +51,7 @@ ModelImporter:
     importLights: 1
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
-    swapUVChannels: 0
+    swapUVChannels: 1
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
