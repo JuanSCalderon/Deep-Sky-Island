@@ -9,6 +9,9 @@ TagManager:
   - Candy
   - Enemy
   - Collectible
+  - Boundary
+  - Spaceship
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
