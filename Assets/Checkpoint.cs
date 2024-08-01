@@ -7,7 +7,8 @@ public class Checkpoint : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.lastCheckPointPos = transform.position;            
+            AudioManager.Instance.PlayMusic("GamePlayMusic2");
+            GameManager.Instance.lastCheckPointPos = transform.position;
         }
     }
 }
