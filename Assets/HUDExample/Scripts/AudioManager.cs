@@ -55,6 +55,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void StopAndPlayMusic(string name)
+    {
+        musicSource.Stop();
+        PlayMusic(name);
+    }
+
     public void PlaySFX(string name, float volume = 1f, float pitch = 1f)
     {
 

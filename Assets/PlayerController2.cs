@@ -24,7 +24,7 @@ public class PlayerController2 : MonoBehaviour
     public float jumpForce;
 
     [SerializeField] int hitPoints = 3;
-    [SerializeField] float fuelCanisters = 0; // Número de elementos necesarios para activar el jetpack
+    [SerializeField] float fuelCanisters = 0; // Nï¿½mero de elementos necesarios para activar el jetpack
     [SerializeField] private FuelBar fuelBar;
     [SerializeField] private GameObject[] life;
     private readonly float maxFuel = 5f;
@@ -89,6 +89,15 @@ public class PlayerController2 : MonoBehaviour
         {
             fallVelocity = jumpForce;
             movePlayer.y = fallVelocity;
+
+            if (jumpForce == 30)
+            {
+                AudioManager.Instance.PlaySFX("JetPack");
+            }
+            else if (jumpForce == 7)
+            {
+                AudioManager.Instance.PlaySFX("Jump");
+            }
         }
 
     }
@@ -113,6 +122,7 @@ public class PlayerController2 : MonoBehaviour
         if (collision.gameObject.CompareTag("Collectible"))
         {
             if (fuelCanisters < maxFuel) fuelCanisters++;
+            AudioManager.Instance.PlaySFX("PowerUp");
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Enemy"))
@@ -120,6 +130,7 @@ public class PlayerController2 : MonoBehaviour
             if (hitPoints > 0) hitPoints--;
             life[hitPoints].SetActive(false);
             Debug.Log($"hit points: {hitPoints}");
+            AudioManager.Instance.PlaySFX("EnemyCrash");
             Destroy(collision.gameObject);
             if (hitPoints == 0) KillPlayer();
         }
@@ -134,20 +145,22 @@ public class PlayerController2 : MonoBehaviour
         else if (collision.gameObject.CompareTag("Spaceship"))
         {
             GameManager.Instance.LoadVictoryScene();
-        }        
+        }
     }
 
     private void KillPlayer()
     {
         GameManager.Instance.LoadGameOverScene();
+        AudioManager.Instance.StopAndPlayMusic("GameOverMusic");
     }
 
     private void ActivateJetpack()
     {
         if (fuelCanisters < maxFuel) return;
-        jumpForce = 20;
+        jumpForce = 30;
         jetParticles.gameObject.SetActive(true);
         hasJetPack = true;
+
     }
 
     private IEnumerator DeactivateJetPack()
@@ -161,5 +174,5 @@ public class PlayerController2 : MonoBehaviour
 
         jumpForce = 7;
         jetParticles.gameObject.SetActive(false);
-    }    
+    }
 }

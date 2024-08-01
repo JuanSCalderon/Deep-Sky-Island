@@ -7,7 +7,7 @@ public class SpawnManagerX : MonoBehaviour
     public GameObject[] objectPrefabs;
     private float spawnDelay = 2;
     private float spawnInterval = 1.5f;
-    private int maxEnemies = 5; // Ensure only one enemy at a time
+    private int maxEnemies = 15; // Ensure only one enemy at a time
     private List<GameObject> spawnedEnemies = new List<GameObject>();
     private List<Transform> spawnPoints = new List<Transform>();
 

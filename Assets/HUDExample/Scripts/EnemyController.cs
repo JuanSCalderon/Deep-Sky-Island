@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     private Transform player;
-    public float detectionRadius = 10f;
+    public float detectionRadius = 50f;
     private NavMeshAgent agent;
     private AudioSource audioSource;
     public AudioClip enemySound;
@@ -32,8 +32,16 @@ public class EnemyController : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = enemySound;
         audioSource.loop = true;
-        audioSource.volume = 1f;
+        audioSource.volume = 0.4f;
         audioSource.pitch = 1.5f;
+
+        // Configuraciones 3D
+        audioSource.spatialBlend = 1.0f; // 1.0f hace que el sonido sea completamente 3D
+        audioSource.maxDistance = detectionRadius; // Máxima distancia a la que se puede escuchar el sonido
+        audioSource.rolloffMode = AudioRolloffMode.Linear; // Configuración de decaimiento del sonido
+
+        audioSource.Play();
+
         audioSource.Play();
 
 
@@ -67,6 +75,7 @@ public class EnemyController : MonoBehaviour
         {
             // Detener el sonido SFX cuando el enemigo colisiona con el jugador
             audioSource.Stop();
+            AudioManager.Instance.PlaySFX("EnemyCrash");
             Debug.Log(gameObject.name);
             Destroy(gameObject);
         }
@@ -74,6 +83,6 @@ public class EnemyController : MonoBehaviour
 
     void OnEnable()
     {
-        player = GameObject.Find("Capsule").transform;
+        player = GameObject.Find("Player").transform;
     }
 }

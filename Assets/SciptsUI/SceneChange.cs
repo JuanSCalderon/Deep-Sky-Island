@@ -7,8 +7,15 @@ public class SceneChange : MonoBehaviour
 {
     [SerializeField] private int[] sceneNumber;
     //Cambio de escena
-    public void Change(int sceneNumber){
+    public void Change(int sceneNumber)
+    {
 
-        SceneManager.LoadScene(sceneNumber); 
+        SceneManager.LoadScene(sceneNumber);
+        if (sceneNumber == 1)
+        {
+            AudioManager.Instance.StopAndPlayMusic("MainMenuMusic");
+        }
+
+
     }
 }
